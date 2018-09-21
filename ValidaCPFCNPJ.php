@@ -9,7 +9,7 @@
  *
  * @package  valida-cpf-cnpj
  * @author   Luiz Otávio Miranda <contato@tutsup.com>
- * @version  v1.3
+ * @version  v1.3.0
  * @access   public
  * @see      http://www.tutsup.com/
  */
