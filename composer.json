@@ -1,0 +1,12 @@
+{
+    "name": "vesp/valida-cpfcnpj",
+    "license": "MIT",
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "classmap": [
+            "ValidaCPFCNPJ.php"
+        ]
+    }
+}
