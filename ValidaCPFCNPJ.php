@@ -9,30 +9,26 @@
  *
  * @package  valida-cpf-cnpj
  * @author   Luiz Otávio Miranda <contato@tutsup.com>
- * @version  v1.3.0
+ * @version  v1.4.0
  * @access   public
  * @see      http://www.tutsup.com/
  */
 class ValidaCPFCNPJ
 {
-
-    private $valor;
-
     /**
-     * Configura o valor
+     * Configura o valor (Construtor)
      *
      * Remove caracteres inválidos do CPF ou CNPJ
      *
      * @param string $valor - O CPF ou CNPJ
      */
-    protected function set_valor ( $valor = null ) {
+    function __construct ( $valor = null ) {
         // Deixa apenas números no valor
         $this->valor = preg_replace( '/[^0-9]/', '', $valor );
 
         // Garante que o valor é uma string
-        $this->valor = (string) $this->valor;
+        $this->valor = (string)$this->valor;
     }
-
     /**
      * Verifica se é CPF ou CNPJ
      *
@@ -55,7 +51,6 @@ class ValidaCPFCNPJ
             return false;
         }
     }
-
     /**
      * Multiplica dígitos vezes posições
      *
@@ -74,10 +69,8 @@ class ValidaCPFCNPJ
         for ( $i = 0; $i < strlen( $digitos ); $i++  ) {
             // Preenche a soma com o dígito vezes a posição
             $soma_digitos = $soma_digitos + ( $digitos[$i] * $posicoes );
-
             // Subtrai 1 da posição
             $posicoes--;
-
             // Parte específica para CNPJ
             // Ex.: 5-4-3-2-9-8-7-6-5-4-3-2
             if ( $posicoes < 2 ) {
@@ -85,11 +78,9 @@ class ValidaCPFCNPJ
                 $posicoes = 9;
             }
         }
-
         // Captura o resto da divisão entre $soma_digitos dividido por 11
         // Ex.: 196 % 11 = 9
         $soma_digitos = $soma_digitos % 11;
-
         // Verifica se $soma_digitos é menor que 2
         if ( $soma_digitos < 2 ) {
             // $soma_digitos agora será zero
@@ -100,15 +91,12 @@ class ValidaCPFCNPJ
             // Nosso dígito procurado é 2
             $soma_digitos = 11 - $soma_digitos;
         }
-
         // Concatena mais um dígito aos primeiro nove dígitos
         // Ex.: 025462884 + 2 = 0254628842
         $cpf = $digitos . $soma_digitos;
-
         // Retorna
         return $cpf;
     }
-
     /**
      * Valida CPF
      *
@@ -121,13 +109,10 @@ class ValidaCPFCNPJ
         // Captura os 9 primeiros dígitos do CPF
         // Ex.: 02546288423 = 025462884
         $digitos = substr($this->valor, 0, 9);
-
         // Faz o cálculo dos 9 primeiros dígitos do CPF para obter o primeiro dígito
         $novo_cpf = $this->calc_digitos_posicoes( $digitos );
-
         // Faz o cálculo dos 10 dígitos do CPF para obter o último dígito
         $novo_cpf = $this->calc_digitos_posicoes( $novo_cpf, 11 );
-
         // Verifica se o novo CPF gerado é idêntico ao CPF enviado
         if ( $novo_cpf === $this->valor ) {
             // CPF válido
@@ -137,7 +122,6 @@ class ValidaCPFCNPJ
             return false;
         }
     }
-
     /**
      * Valida CNPJ
      *
@@ -149,27 +133,19 @@ class ValidaCPFCNPJ
     protected function valida_cnpj () {
         // O valor original
         $cnpj_original = $this->valor;
-
         // Captura os primeiros 12 números do CNPJ
         $primeiros_numeros_cnpj = substr( $this->valor, 0, 12 );
-
         // Faz o primeiro cálculo
         $primeiro_calculo = $this->calc_digitos_posicoes( $primeiros_numeros_cnpj, 5 );
-
         // O segundo cálculo é a mesma coisa do primeiro, porém, começa na posição 6
         $segundo_calculo = $this->calc_digitos_posicoes( $primeiro_calculo, 6 );
-
         // Concatena o segundo dígito ao CNPJ
         $cnpj = $segundo_calculo;
-
         // Verifica se o CNPJ gerado é idêntico ao enviado
         if ( $cnpj === $cnpj_original ) {
             return true;
-        } else {
-            return false;
         }
     }
-
     /**
      * Valida
      *
@@ -178,9 +154,7 @@ class ValidaCPFCNPJ
      * @access public
      * @return bool      True para válido, false para inválido
      */
-    public function valida ($valor) {
-        $this->set_valor($valor);
-
+    public function valida () {
         // Valida CPF
         if ( $this->verifica_cpf_cnpj() === 'CPF' ) {
             // Retorna true para cpf válido
@@ -196,19 +170,15 @@ class ValidaCPFCNPJ
             return false;
         }
     }
-
     /**
      * Formata CPF ou CNPJ
      *
      * @access public
      * @return string  CPF ou CNPJ formatado
      */
-    public function formata($valor) {
-        $this->set_valor($valor);
-
+    public function formata() {
         // O valor formatado
         $formatado = false;
-
         // Valida CPF
         if ( $this->verifica_cpf_cnpj() === 'CPF' ) {
             // Verifica se o CPF é válido
@@ -232,8 +202,8 @@ class ValidaCPFCNPJ
                 $formatado .= substr( $this->valor, 12, 14 ) . '';
             }
         }
-
         // Retorna o valor
         return $formatado;
     }
 }
+?>
