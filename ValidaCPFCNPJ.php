@@ -9,7 +9,7 @@
  *
  * @package  valida-cpf-cnpj
  * @author   Luiz Otávio Miranda <contato@tutsup.com>
- * @version  v1.4.0
+ * @version  v1.5.0
  * @access   public
  * @see      http://www.tutsup.com/
  */
@@ -144,6 +144,8 @@ class ValidaCPFCNPJ
         // Verifica se o CNPJ gerado é idêntico ao enviado
         if ( $cnpj === $cnpj_original ) {
             return true;
+        } else {
+            return false;
         }
     }
     /**
