@@ -9,7 +9,7 @@
  *
  * @package  valida-cpf-cnpj
  * @author   Luiz Otávio Miranda <contato@tutsup.com>
- * @version  v1.5.0
+ * @version  v1.6.0
  * @access   public
  * @see      http://www.tutsup.com/
  */
@@ -106,6 +106,19 @@ class ValidaCPFCNPJ
      * @return bool           True para CPF correto - False para CPF incorreto
      */
     protected function valida_cpf() {
+        if ($this->valor == '00000000000' ||
+            $this->valor == '11111111111' ||
+            $this->valor == '22222222222' ||
+            $this->valor == '33333333333' ||
+            $this->valor == '44444444444' ||
+            $this->valor == '55555555555' ||
+            $this->valor == '66666666666' ||
+            $this->valor == '77777777777' ||
+            $this->valor == '88888888888' ||
+            $this->valor == '99999999999') {
+            return false;
+        }
+
         // Captura os 9 primeiros dígitos do CPF
         // Ex.: 02546288423 = 025462884
         $digitos = substr($this->valor, 0, 9);
