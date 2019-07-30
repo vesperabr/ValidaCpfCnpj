@@ -9,7 +9,7 @@
  *
  * @package  valida-cpf-cnpj
  * @author   Luiz Otávio Miranda <contato@tutsup.com>
- * @version  v1.6.0
+ * @version  v1.6.1
  * @access   public
  * @see      http://www.tutsup.com/
  */
@@ -144,6 +144,19 @@ class ValidaCPFCNPJ
      * @return bool             true para CNPJ correto
      */
     protected function valida_cnpj () {
+        if ($this->valor == '00000000000000' ||
+            $this->valor == '11111111111111' ||
+            $this->valor == '22222222222222' ||
+            $this->valor == '33333333333333' ||
+            $this->valor == '44444444444444' ||
+            $this->valor == '55555555555555' ||
+            $this->valor == '66666666666666' ||
+            $this->valor == '77777777777777' ||
+            $this->valor == '88888888888888' ||
+            $this->valor == '99999999999999') {
+            return false;
+        }
+
         // O valor original
         $cnpj_original = $this->valor;
         // Captura os primeiros 12 números do CNPJ
