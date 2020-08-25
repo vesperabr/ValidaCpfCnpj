@@ -15,7 +15,7 @@ namespace Vespera\ValidaCPFCNPJ;
  * @access   public
  * @see      http://www.tutsup.com/
  */
-class ValidaCPFCNPJ
+class Validator
 {
     /**
      * Configura o valor (Construtor)
