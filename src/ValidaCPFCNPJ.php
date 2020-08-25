@@ -1,6 +1,6 @@
 <?php
 
-namespace Vespera\ValidaCpfCnpj;
+namespace Vespera\ValidaCPFCNPJ;
 
 /**
  * ValidaCPFCNPJ valida e formata CPF e CNPJ
