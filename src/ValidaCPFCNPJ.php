@@ -1,4 +1,7 @@
 <?php
+
+namespace Vespera\ValidaCpfCnpj;
+
 /**
  * ValidaCPFCNPJ valida e formata CPF e CNPJ
  *
@@ -29,6 +32,7 @@ class ValidaCPFCNPJ
         // Garante que o valor é uma string
         $this->valor = (string)$this->valor;
     }
+
     /**
      * Verifica se é CPF ou CNPJ
      *
@@ -51,6 +55,7 @@ class ValidaCPFCNPJ
             return false;
         }
     }
+
     /**
      * Multiplica dígitos vezes posições
      *
@@ -97,6 +102,7 @@ class ValidaCPFCNPJ
         // Retorna
         return $cpf;
     }
+
     /**
      * Valida CPF
      *
@@ -135,6 +141,7 @@ class ValidaCPFCNPJ
             return false;
         }
     }
+
     /**
      * Valida CNPJ
      *
@@ -174,6 +181,7 @@ class ValidaCPFCNPJ
             return false;
         }
     }
+
     /**
      * Valida
      *
@@ -198,6 +206,7 @@ class ValidaCPFCNPJ
             return false;
         }
     }
+
     /**
      * Formata CPF ou CNPJ
      *
@@ -234,4 +243,3 @@ class ValidaCPFCNPJ
         return $formatado;
     }
 }
-?>

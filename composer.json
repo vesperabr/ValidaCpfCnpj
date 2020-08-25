@@ -1,12 +1,13 @@
 {
-    "name": "vesp/valida-cpfcnpj",
+    "name": "vesperabr/valida-cpfcnpj",
+    "description": "Validação de CPF e CNPJ",
     "license": "MIT",
     "require": {
         "php": ">=5.4.0"
     },
     "autoload": {
-        "classmap": [
-            "ValidaCPFCNPJ.php"
-        ]
+        "psr-4": {
+            "Vespera\\ValidaCPFCNPJ\\": "src"
+        }
     }
 }
