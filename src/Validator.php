@@ -12,7 +12,6 @@ namespace Vespera\ValidaCPFCNPJ;
  *
  * @package  valida-cpf-cnpj
  * @author   Luiz Otávio Miranda <contato@tutsup.com>
- * @version  v1.6.1
  * @access   public
  * @see      http://www.tutsup.com/
  */
